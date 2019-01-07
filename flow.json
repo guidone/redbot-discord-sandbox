@@ -1,1 +1,357 @@
-[]
+[
+    {
+        "id": "2ce285d1.b0e86a",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "bf0e764b.f69428",
+        "type": "chatbot-discord-node",
+        "z": "",
+        "botname": "Test Discord",
+        "usernames": "",
+        "clientId": "",
+        "username": "",
+        "iconEmoji": "",
+        "store": "",
+        "log": "",
+        "debug": true
+    },
+    {
+        "id": "6638c7a5.78b748",
+        "type": "chatbot-discord-receive",
+        "z": "2ce285d1.b0e86a",
+        "bot": "bf0e764b.f69428",
+        "botProduction": "",
+        "x": 200,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3bbe5e82.b67142",
+        "type": "chatbot-message",
+        "z": "2ce285d1.b0e86a",
+        "name": "",
+        "message": [
+            {
+                "message": "Quindi?"
+            }
+        ],
+        "answer": false,
+        "silent": false,
+        "x": 410,
+        "y": 220,
+        "wires": [
+            [
+                "1973e23c.3eb39e"
+            ]
+        ]
+    },
+    {
+        "id": "1973e23c.3eb39e",
+        "type": "chatbot-discord-send",
+        "z": "2ce285d1.b0e86a",
+        "bot": "bf0e764b.f69428",
+        "botProduction": "",
+        "track": false,
+        "passThrough": false,
+        "outputs": 0,
+        "x": 640,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "91ae6876.d198b8",
+        "type": "chatbot-discord-receive",
+        "z": "2ce285d1.b0e86a",
+        "bot": "bf0e764b.f69428",
+        "botProduction": "",
+        "x": 200,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2110fa0d.ac8e26",
+        "type": "chatbot-rules",
+        "z": "2ce285d1.b0e86a",
+        "name": "",
+        "rules": [
+            {
+                "type": "messageType",
+                "messageType": "photo"
+            }
+        ],
+        "outputs": 1,
+        "x": 390,
+        "y": 380,
+        "wires": [
+            [
+                "cfd70de4.cb106"
+            ]
+        ]
+    },
+    {
+        "id": "982fe21d.d2131",
+        "type": "chatbot-parse",
+        "z": "2ce285d1.b0e86a",
+        "name": "",
+        "parseType": "photo",
+        "parseVariable": "",
+        "x": 740,
+        "y": 380,
+        "wires": [
+            [
+                "71790088.7448f"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "71790088.7448f",
+        "type": "file",
+        "z": "2ce285d1.b0e86a",
+        "name": "",
+        "filename": "",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "x": 930,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "feec5de9.933f",
+        "type": "comment",
+        "z": "2ce285d1.b0e86a",
+        "name": "Save a photo from chat",
+        "info": "",
+        "x": 220,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "5aaf7e03.14c0a",
+        "type": "comment",
+        "z": "2ce285d1.b0e86a",
+        "name": "Answer chat message",
+        "info": "",
+        "x": 220,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "cfd70de4.cb106",
+        "type": "function",
+        "z": "2ce285d1.b0e86a",
+        "name": "",
+        "func": "msg.filename = '/web/' + msg.payload.filename;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 550,
+        "y": 380,
+        "wires": [
+            [
+                "982fe21d.d2131"
+            ]
+        ]
+    },
+    {
+        "id": "78c2fd5e.9d95f4",
+        "type": "chatbot-discord-receive",
+        "z": "2ce285d1.b0e86a",
+        "bot": "bf0e764b.f69428",
+        "botProduction": "",
+        "x": 200,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dc7e6823.7da038",
+        "type": "chatbot-discord-send",
+        "z": "2ce285d1.b0e86a",
+        "bot": "bf0e764b.f69428",
+        "botProduction": "",
+        "track": false,
+        "passThrough": false,
+        "outputs": 0,
+        "x": 820,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "104cf0f3.36547f",
+        "type": "comment",
+        "z": "2ce285d1.b0e86a",
+        "name": "Answer chat image",
+        "info": "",
+        "x": 210,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "45fc89d8.cb6b38",
+        "type": "chatbot-image",
+        "z": "2ce285d1.b0e86a",
+        "name": "",
+        "filename": "",
+        "image": "",
+        "caption": "",
+        "x": 610,
+        "y": 520,
+        "wires": [
+            [
+                "dc7e6823.7da038"
+            ]
+        ]
+    },
+    {
+        "id": "7931d6e2.f24218",
+        "type": "http request",
+        "z": "2ce285d1.b0e86a",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "url": "https://placeimg.com/640/480/any",
+        "tls": "",
+        "x": 430,
+        "y": 520,
+        "wires": [
+            [
+                "45fc89d8.cb6b38"
+            ]
+        ]
+    },
+    {
+        "id": "4ca4ecdf.d8a9c4",
+        "type": "chatbot-conversation",
+        "z": "2ce285d1.b0e86a",
+        "name": "",
+        "botTelegram": "",
+        "botTelegramProduction": "",
+        "botSlack": "",
+        "botSlackProduction": "",
+        "botFacebook": "",
+        "botFacebookProduction": "",
+        "botViber": "",
+        "botViberProduction": "",
+        "botUniversal": "",
+        "botUniversalProduction": "",
+        "botTwilio": "",
+        "botTwilioProduction": "",
+        "botDiscord": "bf0e764b.f69428",
+        "botDiscordProduction": "",
+        "chatId": "527887273669427201",
+        "transport": "discord",
+        "messageId": "",
+        "contextMessageId": false,
+        "store": "",
+        "x": 390,
+        "y": 680,
+        "wires": [
+            [
+                "1a355c37.e6ee44"
+            ]
+        ]
+    },
+    {
+        "id": "2a16f118.9be27e",
+        "type": "inject",
+        "z": "2ce285d1.b0e86a",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 200,
+        "y": 680,
+        "wires": [
+            [
+                "4ca4ecdf.d8a9c4"
+            ]
+        ]
+    },
+    {
+        "id": "1a355c37.e6ee44",
+        "type": "chatbot-message",
+        "z": "2ce285d1.b0e86a",
+        "name": "",
+        "message": [
+            {
+                "message": "Hei there!"
+            }
+        ],
+        "answer": false,
+        "silent": false,
+        "x": 570,
+        "y": 680,
+        "wires": [
+            [
+                "7830656c.7dad2c"
+            ]
+        ]
+    },
+    {
+        "id": "7830656c.7dad2c",
+        "type": "chatbot-discord-send",
+        "z": "2ce285d1.b0e86a",
+        "bot": "bf0e764b.f69428",
+        "botProduction": "",
+        "track": false,
+        "passThrough": false,
+        "outputs": 0,
+        "x": 760,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "473e361d.690018",
+        "type": "comment",
+        "z": "2ce285d1.b0e86a",
+        "name": "Start conversation",
+        "info": "",
+        "x": 210,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "d44e32e0.cce11",
+        "type": "inject",
+        "z": "2ce285d1.b0e86a",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 200,
+        "y": 80,
+        "wires": [
+            [
+                "f7d3b8de.b89b28"
+            ]
+        ]
+    },
+    {
+        "id": "f7d3b8de.b89b28",
+        "type": "chatbot-support-table",
+        "z": "2ce285d1.b0e86a",
+        "x": 380,
+        "y": 80,
+        "wires": []
+    }
+]

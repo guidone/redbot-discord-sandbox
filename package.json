@@ -1,6 +1,6 @@
 {
     "name": "DiscordPlayground",
-    "description": "A Node-RED Project",
+    "description": "Discord chatbot playground",
     "version": "0.0.1",
     "dependencies": {},
     "node-red": {
